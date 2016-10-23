@@ -22,7 +22,7 @@ function loadMapScenario() {
 // 1. Define pokemon data format, create mock pokemon data
 function get_counter_down_time_from_expire_epoch(epoch) {
     var now_time = new Date().getTime() / 1000;
-    var time_left = epoch - now_time; // unit: second
+    var time_left = epoch / 1000 - now_time; // unit: second
     var second = Math.floor(time_left % 60);
     var minute = Math.floor(time_left / 60);
     return minute + ":" + second;
@@ -35,7 +35,7 @@ function get_pokemon_layer_from_map_items(map_items) {
     for(var i in map_items) {
         var map_item = map_items[i];
         var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(map_item["latitude"], map_item["longtitude"]), 
-                                                 { icon: 'images/pushpin_images/pokemon/'+map_item["pokemon_id"]+'.png',
+                                                 { icon: 'images/pushpin_images/pokemon/'+map_item['pokemon_id']+'.png',
                                                    title: get_counter_down_time_from_expire_epoch(map_item['expire']/1000)});
         pushpins.push(pushpin);
     }
@@ -67,8 +67,8 @@ function refresh_pokemon_data() {
     var params = {
         north: bounds.getNorth(),
         south: bounds.getSouth(),
-        west:bounds.getWest(),
-        east:bounds.getEast(),
+        west: bounds.getWest(),
+        east: bounds.getEast(),
     };
     var body = { };
     var additionalParams = { };
