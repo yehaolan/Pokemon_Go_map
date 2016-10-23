@@ -1,6 +1,6 @@
 var map_manager = {
-    "map": null;
-    "map_items": [];
+    "map": null,
+    "map_items": []
 }
 
 map_manager.map_items = [
