@@ -22,7 +22,7 @@ function loadMapScenario() {
 // 1. Define pokemon data format, create mock pokemon data
 function get_counter_down_time_from_expire_epoch(epoch) {
     var now_time = new Date().getTime() / 1000;
-    var time_left = epoch / 1000 - now_time; // unit: second
+    var time_left = epoch - now_time; // unit: second
     var second = Math.floor(time_left % 60);
     var minute = Math.floor(time_left / 60);
     return minute + ":" + second;
@@ -57,32 +57,32 @@ function refresh_pokemon_layer() {
     map_manager.map.layers.insert(pokemon_layer);
 }
 
-// 4. Connect with REST API
-function refresh_pokemon_data() {
-    //Get boundary of current map view
-    var bounds = map_manager.map.getBounds();
+// // 4. Connect with REST API
+// function refresh_pokemon_data() {
+//     //Get boundary of current map view
+//     var bounds = map_manager.map.getBounds();
     
-    //Request Pokemon in current map view
-    var apigClient = apigClientFactory.newClient(); 
-    var params = {
-        north: bounds.getNorth(),
-        south: bounds.getSouth(),
-        west: bounds.getWest(),
-        east: bounds.getEast(),
-    };
-  var body = { };
-  var additionalParams = { };
+//     //Request Pokemon in current map view
+//     var apigClient = apigClientFactory.newClient(); 
+//     var params = {
+//         north: bounds.getNorth(),
+//         south: bounds.getSouth(),
+//         west: bounds.getWest(),
+//         east: bounds.getEast(),
+//     };
+//   var body = { };
+//   var additionalParams = { };
  
-  apigClient.mapPokemonsGet(params, body, additionalParams)
-    .then(function(result){
-        //This is where you would put a success callback
-         map_manager.map_items = result.data;
-//          console.log(result);
-    }).catch( function(result){
-        //This is where you would put an error callback
-        console.log(result);
-    });   
-}
-window.setInterval(refresh_pokemon_data, 1000);
+//   apigClient.mapPokemonsGet(params, body, additionalParams)
+//     .then(function(result){
+//         //This is where you would put a success callback
+//          map_manager.map_items = result.data;
+// //          console.log(result);
+//     }).catch( function(result){
+//         //This is where you would put an error callback
+//         console.log(result);
+//     });   
+// }
+// window.setInterval(refresh_pokemon_data, 1000);
 
 window.setInterval(refresh_pokemon_layer, 1000);
