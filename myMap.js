@@ -64,14 +64,14 @@ function refresh_pokemon_data() {
     
     //Request Pokemon in current map view
     var apigClient = apigClientFactory.newClient(); 
-//     var params = {
-//         north: bounds.getNorth(),
-//         south: bounds.getSouth(),
-//         west: bounds.getWest(),
-//         east: bounds.getEast(),
-//     };
-//     var body = { };
-//     var additionalParams = { };
+    var params = {
+        north: bounds.getNorth(),
+        south: bounds.getSouth(),
+        west: bounds.getWest(),
+        east: bounds.getEast(),
+    };
+    var body = { };
+    var additionalParams = { };
 
 //     apigClient.mapPokemonsGet(params, body, additionalParams)
 //         .then(function(result){
