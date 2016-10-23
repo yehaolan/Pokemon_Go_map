@@ -7,8 +7,8 @@ map_manager.map_items = [
     {
         "pokemon_id": 12,
         "expire": 1477213987,
-        "longitude": -73.9800345,
-        "latitude": 40.7596651,
+        "longitude": -122.290233,
+        "latitude": 37.868286,
     }
 ]
 
