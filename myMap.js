@@ -82,5 +82,5 @@ function refresh_pokemon_data() {
             console.log(result);
         });
 }
- 
+window.setInterval(refresh_pokemon_data, 1000);
 window.setInterval(refresh_pokemon_layer, 1000);
